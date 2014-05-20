@@ -7,7 +7,9 @@
         padding: 0px;
       }
       img{
-        position: absolute;
+		width: 50px;
+		height: 50px;
+		position: absolute;
         opacity: 0;
         -webkit-transition: opacity 0.2s ease;
         -moz-transition: opacity 0.2s ease;
@@ -29,12 +31,12 @@
   <body>
     <div class ="container">
       <img src="icon1.jpg"/>
-      <canvas id="myCanvas1" width="100" height="100" ></canvas>
+      <canvas id="myCanvas1" width="50" height="50" ></canvas>
     </div>
     
     <div class ="container">
       <img src="icon2.jpg"/>
-      <canvas id="myCanvas2" width="100" height="100" ></canvas>
+      <canvas id="myCanvas2" width="50" height="50" ></canvas>
     </div>
 
     <script>
@@ -45,7 +47,7 @@
         var x = 0;
         var y = 0;
         console.log(context);
-        context.drawImage(imageObj, x, y);
+        context.drawImage(imageObj, x, y, canvas.width, canvas.height);
 
         var imageData = context.getImageData(x, y, imageObj.width, imageObj.height);
         var data = imageData.data;
@@ -61,7 +63,7 @@
         }
 
         // overwrite original image
-        context.putImageData(imageData, x, y);
+        context.putImageData(imageData, x, y,0,0, canvas.width,canvas.height);
       }
       
       
